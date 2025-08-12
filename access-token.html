@@ -8,7 +8,7 @@
     <script>
       if (!location.hash){
         var req = new XMLHttpRequest();
-        req.open("GET", "https://stackoverflow.com/oauth/dialog?client_id=34528&scope=write_access,no_expiry&redirect_url=" + encodeURIComponent(location.href), false);
+        req.open("GET", "https://stackoverflow.com/oauth/dialog?client_id=34528&scope=write_access,no_expiry&redirect_uri=" + encodeURIComponent(location.href), false);
         req.send();
         var response = req.responseText;
         
