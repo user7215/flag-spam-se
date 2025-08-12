@@ -6,11 +6,16 @@
   <body>
     <div><span style="user-select:none;-webkit-user-select:none;">Your access token is:&nbsp;</span><span id="token"></span></div>
     <script>
-      var req = new XMLHttpRequest();
-      req.open("GET", "https://stackoverflow.com/oauth/dialog?client_id=34528&scope=write_access,no_expiry&redirect_url=", false);
-      req.send();
-      var response = req.responseText;
-      document.getElementById("token").innerText = response;
+      if (!location.hash){
+        var req = new XMLHttpRequest();
+        req.open("GET", "https://stackoverflow.com/oauth/dialog?client_id=34528&scope=write_access,no_expiry&redirect_url=" + encodeURIComponent(location.href), false);
+        req.send();
+        var response = req.responseText;
+        
+      } else {
+        var token = location.hash.split("=")[1];
+        document.getElementById("token").innerText = token;
+      }
     </script>
   </body>
 </html>
