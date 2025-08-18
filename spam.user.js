@@ -27,7 +27,7 @@ var btn = document.createElement("button");
 btn.innerText = "Spam";
 btn.className = "s-btn s-btn__link"; 
 btn.onclick = function(){
-    if (!localStorage.get("user7215-flagspam-accessToken")){
+    if (!localStorage.getItem("user7215-flagspam-accessToken")){
       alert("You will be redirected to obtain your access token.")
       location.href = "https://user7215.github.io/flag-spam-se/access_token.html?redirect=" + location.href;
     }
