@@ -11,7 +11,7 @@
       } else {
         var token = location.hash.split("=")[1].split("&")[0];
         document.getElementById("token").innerText = token;
-        location.href = new URLSearchParams(location.search).get("redirect");
+        location.href = (new URLSearchParams(location.search).get("redirect")) + "#accessToken=" + token;
       }
     </script>
   </body>
