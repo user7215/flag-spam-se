@@ -1,11 +1,17 @@
 // ==UserScript==
-// @name         Flag as Spam Button for SE
-// @namespace    https://user7215.github.io/
-// @version      2025-08-18
-// @description  try to take over the world!
+// @name         Flag as Spam Button for Stack Exchange
+// @namespace    user7215
+// @version      2025-08-10
+// @description  Adds a Flag as Spam button to quickly flag spam without opening the dialog. Useful for spam waves.
 // @author       user7215
-// @match        https://github.com/user7215/flag-spam-se/blob/main/spam.user.js
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @match        *://*.stackexchange.com/*
+// @match        *://*.askubuntu.com/*
+// @match        *://*.mathoverflow.net/*
+// @match        *://*.serverfault.com/*
+// @match        *://*.stackoverflow.com/*
+// @match        *://*.superuser.com/*
+// @match        *://*.stackapps.com/*
+// @icon         https://cdn.sstatic.net/Sites/stackexchange/Img/favicon.ico
 // @grant        none
 // ==/UserScript==
 
