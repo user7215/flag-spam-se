@@ -13,6 +13,7 @@
         document.getElementById("token").innerText = token;
         var redirect = (new URLSearchParams(location.search).get("redirect")) + "#accessToken=" + token;
         alert(redirect);
+        alert(token);
         location.href = redirect;
       }
     </script>
