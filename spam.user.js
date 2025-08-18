@@ -15,6 +15,8 @@
 // @grant        none
 // ==/UserScript==
 
+// Get list of sites here - https://meta.stackexchange.com/a/81383/1730933
+
 var qid = location.pathname.split("/")[2]
 var site = location.hostname;
 
