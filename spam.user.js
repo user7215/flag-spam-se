@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Flag as Spam Button for Stack Exchange
 // @namespace    user7215
-// @version      2025-08-10
+// @version      2025-08-18
 // @description  Adds a Flag as Spam button to quickly flag spam without opening the dialog. Useful for spam waves.
 // @author       user7215
 // @match        *://*.stackexchange.com/*
