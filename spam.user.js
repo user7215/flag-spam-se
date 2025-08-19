@@ -32,9 +32,9 @@ btn.onclick = function(){
     }
 };
 
-if (location.hash){
+if (location.hash.includes("accessToken")){
   let accessToken = location.hash.split("#")[1].split("=")[1];
-  alert(accessToken);
+  localStorage.setItem("user7215-flagspam-accessToken", accessToken)
 }
 
 div.appendChild(btn);
