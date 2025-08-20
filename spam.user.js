@@ -33,9 +33,8 @@ btn.onclick = function(){
     }
     // Flag spam
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "//api.stackexchange.com/2.3/questions/253326/flags/options?key=rl_jhoXv9U3Hh3swDc3aioi1uWKo&site=meta", false);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(new URLSearchParams("access_token=" + localStorage.getItem("user7215-flagspam-accessToken")));
+    xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=rl_jhoXv9U3Hh3swDc3aioi1uWKo&site=meta&access_token=" + localStorage.getItem("user7215-flagspam-accessToken"), false);
+    xhr.send(new URLSearchParams();
     alert(xhr.responseText);
 };
 
