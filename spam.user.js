@@ -27,12 +27,19 @@ var btn = document.createElement("button");
 btn.innerText = "Spam";
 btn.className = "s-btn s-btn__link"; 
 btn.onclick = function(){
-    if (!localStorage.getItem("user7215-flagspam-accessToken")){
+    if (!localStorage.getItem("user7215-flagspam-accessToken")){ // get access token if not exist.
+      alert("Redirecting to get API access token. This question has not been flagged as spam.")
       location.href = "https://user7215.github.io/flag-spam-se/access-token.html?redirect=" + location.href;
     }
+    // Flag spam
+    var xhr = new XMLHttpRequest();
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.open("POST", "//api.stackexchange.com/2.3/questions/253326/flags/options?key=rl_jhoXv9U3Hh3swDc3aioi1uWKo&site=meta", false);
+    xhr.send(new URLSearchParams("access_token=" + localStorage.getItem("user7215-flagspam-accessToken")));
+    alert(xhr.responseText);
 };
 
-if (location.hash.includes("accessToken")){
+if (location.hash.includes("accessToken")){ // save access token
   let accessToken = location.hash.split("#")[1].split("=")[1];
   localStorage.setItem("user7215-flagspam-accessToken", accessToken)
 }
