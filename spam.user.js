@@ -27,7 +27,7 @@ div.className = "flex--item";
 
 var btn = document.createElement("button");
 btn.innerText = "Spam";
-btn.className = "s-btn s-btn__link"; 
+btn.className = "s-btn s-btn__link";
 btn.onclick = function(){
     if (!token){ // get access token if not exist.
       alert("Redirecting to get API access token. This question has not been flagged as spam. This will happen one time for every separate domain and every time you clear your localStorage (cookies).")
@@ -44,14 +44,14 @@ btn.onclick = function(){
     xhr.open("POST", "https://api.stackexchange.com/2.3/questions/" + qid + "/flags/add/", false);
     xhr.setRequestHeader
     var formData = new FormData();
-    formData.appemd("id", qid);
-    formData.appemd("option_id", optionID);
-    formData.appemd("comment", "Done through user7215's flag-spam-se script. https://github.com/user7215/flag-spam-se");
-    formData.appemd("key", key);
-    formData.appemd("access_token", token);
-    formData.appemd("preview", true); // testing right now
-    formData.appemd("filter", "default");
-    formData.appemd("site", site);
+    formData.append("id", qid);
+    formData.append("option_id", optionID);
+    formData.append("comment", "Done through user7215's flag-spam-se script. https://github.com/user7215/flag-spam-se");
+    formData.append("key", key);
+    formData.append("access_token", token);
+    formData.append("preview", true); // testing right now
+    formData.append("filter", "default");
+    formData.append("site", site);
     xhr.send(formData);
 };
 
