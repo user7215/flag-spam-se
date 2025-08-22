@@ -32,27 +32,28 @@ btn.onclick = function(){
     if (!token){ // get access token if not exist.
       alert("Redirecting to get API access token. This question has not been flagged as spam. This will happen one time for every separate domain and every time you clear your localStorage (cookies).")
       location.href = "https://user7215.github.io/flag-spam-se/access-token.html?redirect=" + location.href;
+    } else {
+        // Flag spam
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=" + key + "&site=" + site + "&access_token=" + token, false);
+        xhr.send();
+        var optionsJSON = JSON.parse(xhr.responseText);
+        console.log(optionsJSON.toString())
+        var optionID = optionsJSON.items[0].option_id;
+        console.log(optionID);
+        xhr.open("POST", "https://api.stackexchange.com/2.3/questions/" + qid + "/flags/add/", false);
+        xhr.setRequestHeader
+        var formData = new FormData();
+        formData.append("id", qid);
+        formData.append("option_id", optionID);
+        formData.append("comment", "Done through user7215's flag-spam-se script. https://github.com/user7215/flag-spam-se");
+        formData.append("key", key);
+        formData.append("access_token", token);
+        formData.append("preview", true); // testing right now
+        formData.append("filter", "default");
+        formData.append("site", site);
+        xhr.send(formData);
     }
-    // Flag spam
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=" + key + "&site=" + site + "&access_token=" + token, false);
-    xhr.send();
-    var optionsJSON = JSON.parse(xhr.responseText);
-    console.log(optionsJSON.toString())
-    var optionID = optionsJSON.items[0].option_id;
-    console.log(optionID);
-    xhr.open("POST", "https://api.stackexchange.com/2.3/questions/" + qid + "/flags/add/", false);
-    xhr.setRequestHeader
-    var formData = new FormData();
-    formData.append("id", qid);
-    formData.append("option_id", optionID);
-    formData.append("comment", "Done through user7215's flag-spam-se script. https://github.com/user7215/flag-spam-se");
-    formData.append("key", key);
-    formData.append("access_token", token);
-    formData.append("preview", true); // testing right now
-    formData.append("filter", "default");
-    formData.append("site", site);
-    xhr.send(formData);
 };
 
 if (location.hash.includes("accessToken")){ // save access token
