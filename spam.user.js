@@ -36,7 +36,7 @@ btn.onclick = function(){
     xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=rl_jhoXv9U3Hh3swDc3aioi1uWKo&site=meta&access_token=" + localStorage.getItem("user7215-flagspam-accessToken"), false);
     xhr.send();
     optionsJSON = JSON.parse(xhr.responseText);
-    alert(optionsJSON)
+    alert(optionsJSON.toString())
     var optionID = optionsJSON.items[0].option_id;
     alert(optionID)
 };
