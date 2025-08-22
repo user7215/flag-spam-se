@@ -29,7 +29,7 @@ var btn = document.createElement("button");
 btn.innerText = "Spam";
 btn.className = "s-btn s-btn__link"; 
 btn.onclick = function(){
-    if (!token)){ // get access token if not exist.
+    if (!token){ // get access token if not exist.
       alert("Redirecting to get API access token. This question has not been flagged as spam. This will happen one time for every separate domain and every time you clear your localStorage (cookies).")
       location.href = "https://user7215.github.io/flag-spam-se/access-token.html?redirect=" + location.href;
     }
