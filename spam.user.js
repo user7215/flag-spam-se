@@ -12,6 +12,7 @@
 // @match        *://*.superuser.com/questions/*/*
 // @match        *://*.stackapps.com/questions/*/*
 // @icon         https://cdn.sstatic.net/Sites/stackexchange/Img/favicon.ico
+// @updateURL    https://github.com/user7215/flag-spam-se/raw/refs/heads/main/spam.meta.js
 // @grant        none
 // ==/UserScript==
 
