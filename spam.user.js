@@ -32,15 +32,19 @@ btn.onclick = function(){
     if (!token){ // get access token if not exist.
       alert("Redirecting to get API access token. This question has not been flagged as spam. This will happen one time for every separate domain and every time you clear your localStorage (cookies).")
       location.href = "https://user7215.github.io/flag-spam-se/access-token.html?redirect=" + location.href;
+    }
+    // Flag spam
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=" + key + "&site=" + site + "&access_token=" + token, false);
+    xhr.send();
+    var options = xhr.responseText;
+    var optionsJSON = JSON.parse(options);
+    var optionID = optionsJSON.items[0].option_id;
+    if (!optionID){
+        alert("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question. If you think this is a bug, check the console for details.")
+        console.log("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question. If you think this is a bug, create an issue on GitHub (https://github.com/user7215/flag-spam-se) or ask on the StackApps post (https://stackapps.com/questions/11876/placeholder-flag-as-spam-quick-button). Please include the below debug output. Please include the below")
+        console.log("options: ", options, "\noptionsJSON: ", optionsJSON, "\noptionID: ", optionID);
     } else {
-        // Flag spam
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=" + key + "&site=" + site + "&access_token=" + token, false);
-        xhr.send();
-        var optionsJSON = JSON.parse(xhr.responseText);
-        console.log(optionsJSON.toString())
-        var optionID = optionsJSON.items[0].option_id;
-        console.log(optionID);
         xhr.open("POST", "https://api.stackexchange.com/2.3/questions/" + qid + "/flags/add/", false);
         xhr.setRequestHeader
         var formData = new FormData();
