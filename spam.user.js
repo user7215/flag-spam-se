@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name         Flag as Spam Button for Stack Exchange
 // @namespace    user7215
-// @version      2025-08-21
+// @version      2025-08-20
 // @description  Adds a Flag as Spam button to quickly flag spam without opening the dialog. Useful for spam waves.
 // @author       user7215
-// @match        *://*.stackexchange.com/*
-// @match        *://*.askubuntu.com/*
-// @match        *://*.mathoverflow.net/*
-// @match        *://*.serverfault.com/*
-// @match        *://*.stackoverflow.com/*
-// @match        *://*.superuser.com/*
-// @match        *://*.stackapps.com/*
+// @match        *://*.stackexchange.com/questions/*/*
+// @match        *://*.askubuntu.com/questions/*/*
+// @match        *://*.mathoverflow.net/questions/*/*
+// @match        *://*.serverfault.com/questions/*/*
+// @match        *://*.stackoverflow.com/questions/*/*
+// @match        *://*.superuser.com/questions/*/*
+// @match        *://*.stackapps.com/questions/*/*
 // @icon         https://cdn.sstatic.net/Sites/stackexchange/Img/favicon.ico
 // @grant        none
 // ==/UserScript==
@@ -28,14 +28,17 @@ btn.innerText = "Spam";
 btn.className = "s-btn s-btn__link"; 
 btn.onclick = function(){
     if (!localStorage.getItem("user7215-flagspam-accessToken")){ // get access token if not exist.
-      alert("Redirecting to get API access token. This question has not been flagged as spam.")
+      alert("Redirecting to get API access token. This question has not been flagged as spam. This will happen one time for every separate domain and every time you clear your localStorage (cookies).")
       location.href = "https://user7215.github.io/flag-spam-se/access-token.html?redirect=" + location.href;
     }
     // Flag spam
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=rl_jhoXv9U3Hh3swDc3aioi1uWKo&site=" + location.hostname + "&access_token=" + localStorage.getItem("user7215-flagspam-accessToken"), false);
+    xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=rl_jhoXv9U3Hh3swDc3aioi1uWKo&site=meta&access_token=" + localStorage.getItem("user7215-flagspam-accessToken"), false);
     xhr.send();
-    alert(xhr.responseText);
+    optionsJSON = JSON.parse(xhr.responseText);
+    alert(optionsJSON)
+    var optionID = optionsJSON.items[0].option_id;
+    alert(optionID)
 };
 
 if (location.hash.includes("accessToken")){ // save access token
