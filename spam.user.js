@@ -52,7 +52,7 @@ btn.onclick = function(){
     var optionID = optionsJSON.items[0].option_id;
     if (!optionID){
         alert(error_message)
-        console.log("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question. If you think this is a bug, create an issue on GitHub (https://github.com/user7215/flag-spam-se) or ask on the StackApps post (https://stackapps.com/questions/11876/placeholder-flag-as-spam-quick-button). Please include the below debug output. Please include the below output.");
+        console.log("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question/retracted the vote. If you think this is a bug, create an issue on GitHub (https://github.com/user7215/flag-spam-se) or ask on the StackApps post (https://stackapps.com/questions/11876/placeholder-flag-as-spam-quick-button). Please include the below debug output. Please include the below output.");
         console.log("options: ", options, "\noptionsJSON: ", optionsJSON, "\noptionID: ", optionID);
     } else {
         xhr.open("POST", "https://api.stackexchange.com/2.3/questions/" + qid + "/flags/add/", false);
@@ -68,7 +68,7 @@ btn.onclick = function(){
         xhr.send(formData);
         if (xhr.status !== 200){
             alert(error_message);
-            console.log("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question. If you think this is a bug, create an issue on GitHub (https://github.com/user7215/flag-spam-se) or ask on the StackApps post (https://stackapps.com/questions/11876/placeholder-flag-as-spam-quick-button). Please include the below debug output. Please include the below output.");
+            console.log("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question/retracted the vote. If you think this is a bug, create an issue on GitHub (https://github.com/user7215/flag-spam-se) or ask on the StackApps post (https://stackapps.com/questions/11876/placeholder-flag-as-spam-quick-button). Please include the below debug output. Please include the below output.");
             console.log("/questions/{id}/flags/add returned " + xhr.status + " instead of 200. responseText: " + xhr.responseText);
         }
     }
