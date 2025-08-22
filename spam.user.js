@@ -17,10 +17,17 @@
 
 // Get list of sites here - https://meta.stackexchange.com/a/81383/1730933
 
+
+// -----CONFIG-----
+var testing_mode = false; // when testing set to true
+// -----END CONFIG -----
+
+// ---- API CONFIG ---
 var qid = location.pathname.split("/")[2]
 var site = location.hostname;
 var token = localStorage.getItem("user7215-flagspam-accessToken");
 var key = "rl_jhoXv9U3Hh3swDc3aioi1uWKo";
+// --- END API CONFIG ---
 
 var div = document.createElement("div");
 div.className = "flex--item";
@@ -53,7 +60,7 @@ btn.onclick = function(){
         formData.append("comment", "Done through user7215's flag-spam-se script. https://github.com/user7215/flag-spam-se");
         formData.append("key", key);
         formData.append("access_token", token);
-        formData.append("preview", true); // testing right now
+        formData.append("preview", testing_mode);
         formData.append("filter", "default");
         formData.append("site", site);
         xhr.send(formData);
