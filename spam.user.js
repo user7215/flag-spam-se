@@ -37,7 +37,7 @@ btn.onclick = function(){
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "//api.stackexchange.com/2.3/questions/" + qid + "/flags/options?key=" + key + "&site=" + site + "&access_token=" + token, false);
     xhr.send();
-    optionsJSON = JSON.parse(xhr.responseText);
+    var optionsJSON = JSON.parse(xhr.responseText);
     console.log(optionsJSON.toString())
     var optionID = optionsJSON.items[0].option_id;
     console.log(optionID);
@@ -50,7 +50,7 @@ btn.onclick = function(){
     formData.appemd("key", key);
     formData.appemd("access_token", token);
     formData.appemd("preview", true); // testing right now
-    formData.appemd("filter", default);
+    formData.appemd("filter", "default");
     formData.appemd("site", site);
     xhr.send(formData);
 };
