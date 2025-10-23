@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Flag as Spam Button for Stack Exchange
-// @namespace    https://user7215.github.io/
+// @namespace    user7215
 // @version      2025-08-22
 // @description  Adds a Flag as Spam button to quickly flag spam without opening the dialog. Useful for spam waves.
 // @author       user7215
@@ -12,7 +12,6 @@
 // @match        *://*.superuser.com/questions/*/*
 // @match        *://*.stackapps.com/questions/*/*
 // @icon         https://cdn.sstatic.net/Sites/stackexchange/Img/favicon.ico
-// @updateURL    https://github.com/user7215/flag-spam-se/raw/refs/heads/main/spam.meta.js
 // @grant        none
 // ==/UserScript==
 
@@ -22,6 +21,7 @@
 // -----CONFIG-----
 var testing_mode = false; // when testing set to true
 var error_message = "There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question/retracted the flag. If you think this is a bug, check the console for details.";
+var success_message = "Successfully flagged!"
 // -----END CONFIG -----
 
 // ---- API CONFIG ---
@@ -71,6 +71,8 @@ btn.onclick = function(){
             alert(error_message);
             console.log("There was an error flagging the question as spam. This might occur because this is your own question or you have already flagged this question/retracted the vote. If you think this is a bug, create an issue on GitHub (https://github.com/user7215/flag-spam-se) or ask on the StackApps post (https://stackapps.com/questions/11876/placeholder-flag-as-spam-quick-button). Please include the below debug output. Please include the below output.");
             console.log("/questions/{id}/flags/add returned " + xhr.status + " instead of 200. responseText: " + xhr.responseText);
+        } else {
+            alert(success_message);
         }
     }
 };
